@@ -10,11 +10,9 @@ var arguments = process.argv;
 switch (arguments[2]) {
   case "generate":
     generator.projectgenerate();
-    console.log("boiler plate created");
     break;
   case "make:screen":
     screenGenerator.learn(arguments[3]);
-    console.log("Screen Created");
     break;
   case "make:install":
     libraryInstaller.installer();
