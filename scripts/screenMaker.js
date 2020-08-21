@@ -11,7 +11,7 @@ import {
 export const ${screenName} = (props) => {
   return (
     <View style={styles.container}>
-      <Text>${screenName}</Text>
+      <Text>${screenName} Screen</Text>
     </View>
   );
 };
@@ -79,7 +79,7 @@ const allscreen = () => {
   return `export * from "./screens";`;
 };
 
-exports.learn = (screen) => {
+exports.screenMaker = (screen) => {
   const CURR_DIR = process.cwd();
   fs.mkdirSync(`${CURR_DIR}/${screen}`);
   fs.mkdirSync(`${CURR_DIR}/${screen}/screens`);

@@ -5,6 +5,7 @@ const fs = require("fs");
 const generator = require("./scripts/projectGenerator");
 const screenGenerator = require("./scripts/screenMaker");
 const libraryInstaller = require("./scripts/installer");
+const help = require("./scripts/help")
 var arguments = process.argv;
 
 switch (arguments[2]) {
@@ -12,11 +13,13 @@ switch (arguments[2]) {
     generator.projectgenerate();
     break;
   case "make:screen":
-    screenGenerator.learn(arguments[3]);
+    screenGenerator.screenMaker(arguments[3]);
     break;
   case "make:install":
     libraryInstaller.installer();
     break;
+  case "help":
+      return help.help()
   default:
     return;
 }
