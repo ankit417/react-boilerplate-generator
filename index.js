@@ -5,8 +5,8 @@ const fs = require("fs");
 const generator = require("./scripts/projectGenerator");
 const screenGenerator = require("./scripts/screenMaker");
 const libraryInstaller = require("./scripts/installer");
+var arguments = process.argv;
 
-console.log("arguments", arguments[2]);
 switch (arguments[2]) {
   case "generate":
     generator.projectgenerate();
