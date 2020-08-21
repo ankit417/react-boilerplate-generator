@@ -1,11 +1,10 @@
 {
-  "name": "generator",
+  "name": "codniv-boilerplate-generator",
   "version": "1.0.0",
   "description": "generator of react native",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "hello": "npm install"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
     "codniv": "./index.js"
@@ -17,4 +16,3 @@
     "npm": "^6.14.8"
   }
 }
-
