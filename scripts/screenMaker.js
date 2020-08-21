@@ -96,7 +96,7 @@ exports.learn = (screen) => {
   });
 
   const actions = `${CURR_DIR}/${screen}/${screen}.action.js`;
-  fs.appendFile(action_types, actionsScreen(screen), (err) => {
+  fs.appendFile(actions, actionsScreen(screen), (err) => {
     if (err) throw err;
   });
 
