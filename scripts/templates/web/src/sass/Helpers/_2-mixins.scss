@@ -1,0 +1,70 @@
+// RESPONSIVE MEDIA QUERY
+
+// BREAK POINTS FOR THE DEVICES
+$sm: 576px; // FOR SMALL DEVICES == sm
+$md: 768px; // FOR MEDIUM DEVICES == md
+$lg: 992px; // FOR LARGE DEVICES == lg
+$xlg: 1200px; // FOR EXTRA LARGE DEVICES == xlg
+
+@mixin responsive-for($size) {
+    @if $size == sm {
+        @media all and (max-width: $sm) {
+            @content;
+        }
+    } @else if $size == md {
+        @media all and (max-width: $md) {
+            @content;
+        }
+    } @else if $size == lg {
+        @media all and (max-width: $lg)  {
+            @content;
+        }
+    } @else if $size == xlg {
+        @media all and (max-width: $xlg) {
+            @content;
+        }
+    }
+}
+
+// ANIMATION MIXINS
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+@mixin animation($str) {
+    -webkit-animation: #{$str};
+    -moz-animation: #{$str};
+    -ms-animation: #{$str};
+    -o-animation: #{$str};
+    animation: #{$str};
+}
+
+// PLACEHOLDER STYLE MIXIN
+@mixin placeholder {
+    &::-webkit-input-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &:-ms-input-placeholder { @content; }
+    &:-moz-placeholder { @content; }
+}
+
+// SCROLLBAR MIXIN
+@mixin scrollbar($scrollBarWidth, $foregroundColor: $black, $backgroundColor: $white, $hoverColor: darken($black, 10%)) {
+    &::-webkit-scrollbar { width: $scrollBarWidth; }
+    &::-webkit-scrollbar-track { background: $backgroundColor; }
+    &::-webkit-scrollbar-thumb { background: $foregroundColor; border-radius: 10px; }
+    &::-webkit-scrollbar-thumb:hover { background: $hoverColor; }
+}
