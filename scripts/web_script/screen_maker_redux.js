@@ -39,7 +39,7 @@ const actionsScreen = (screen) => {
                 dispatch({ type:  ${screen.toUpperCase()}.LOADING });
 
                 res = await api(
-                  ${APIS.sample},
+                  {APIS.sample},
                   "POST",
                   { param1, param2 }
                 );
