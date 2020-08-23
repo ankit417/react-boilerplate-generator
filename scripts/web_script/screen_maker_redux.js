@@ -15,10 +15,10 @@ const makeScreen = (screen) => {
 };
 
 const actionTypes = (screen) => {
-  return `//${screen.toUpperCase()} ACTION SET
-        export const ${screen.toUpperCase()} = createActionSet("${
-    screen.toUpperCase
-  }")`;
+  return `//
+  /n
+  ${screen.toUpperCase()} ACTION SET /n
+        export const ${screen.toUpperCase()} = createActionSet("${screen.toUpperCase()}")`;
 };
 
 const actionsExport = (screen) => {
@@ -39,7 +39,7 @@ const actionsScreen = (screen) => {
                 dispatch({ type:  ${screen.toUpperCase()}.LOADING });
 
                 res = await api(
-                  {APIS.sample},
+                  APIS.sample,
                   "POST",
                   { param1, param2 }
                 );
@@ -94,7 +94,7 @@ exports.webScreenMaker = (screen) => {
   fs.mkdirSync(`${CURR_DIR}/components/${screen}Page`);
   const pageName = screen.charAt(0).toUpperCase() + screen.slice(1);
   const screens = `${CURR_DIR}/components/${screen}Page/${pageName}Page.js`;
-  fs.writeFileSync(screens, makeScreen(screen), "utf8");
+  fs.writeFileSync(screens, makeScreen(pageName), "utf8");
 
   const action_types = `${CURR_DIR}/actions/ActionTypes.action.js`;
   fs.appendFile(action_types, actionTypes(screen), (err) => {
