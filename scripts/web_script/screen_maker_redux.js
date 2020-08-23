@@ -3,10 +3,10 @@ const fs = require("fs");
 const makeScreen = (screen) => {
   return `import React from "react";
 
-    const ${screen} = () => {
+    const ${screen}Page = () => {
       return (
         <div>
-          ${screen} 
+          ${screen}Page 
         </div>
       )
     }
@@ -15,29 +15,28 @@ const makeScreen = (screen) => {
 };
 
 const actionTypes = (screen) => {
-  return `//
-  /n
-  ${screen.toUpperCase()} ACTION SET /n
-        export const ${screen.toUpperCase()} = createActionSet("${screen.toUpperCase()}")`;
+  return `
+${screen.toUpperCase()} ACTION SET 
+export const ${screen.toUpperCase()} = createActionSet("${screen.toUpperCase()}")`;
 };
 
 const actionsExport = (screen) => {
-  return `export * from "./${screen}.action.js"`;
+  return `
+export * from "./${screen}.action.js";`;
 };
 
 const actionsScreen = (screen) => {
   return `import {
-            ${screen.toUpperCase()}
-          } from "./Actions";
-          import { APIS } from "../config/Config";
-          import { api } from "../helpers/Helpers";
+${screen.toUpperCase()}
+} from "./Actions";
+import { APIS } from "../config/Config";
+import { api } from "../helpers/Helpers";
 
-          export function ${screen.toLowerCase()}Action({ param1, param2 }) {
-            return async function(dispatch) {
-              let res;
-              try {
-                dispatch({ type:  ${screen.toUpperCase()}.LOADING });
-
+export function ${screen.toLowerCase()}Action({ param1, param2 }) {
+    return async function(dispatch) {
+        let res;
+        try {
+            dispatch({ type:  ${screen.toUpperCase()}.LOADING });
                 res = await api(
                   APIS.sample,
                   "POST",
@@ -56,35 +55,34 @@ const actionsScreen = (screen) => {
                 dispatch({ type:  ${screen.toUpperCase()}.ERROR });
                 console.error(message);
                 return 0;
-              }
-            }
-          }
+        }
+    }
+}
         `;
 };
 
 const reducer = (screen) => {
   return `import {
-            ${screen.toUpperCase()}
-          } from "../actions/Actions";
+${screen.toUpperCase()}
+} from "../actions/Actions";
 
-          const initalState = {
-            loading:false,
-            error:false
-          };
+const initalState = {
+loading:false,
+error:false
+};
 
-          export function ${screen.toLowerCase()}Reducer(state = initalState, action) {
-            const { type } = action;
+export function ${screen.toLowerCase()}Reducer(state = initalState, action) {
+    const { type } = action;
 
-            switch(type) {
-              case ${screen.toUpperCase()}.LOADING:
-                return {...state, loading: true, error:false};
-              case ${screen.toUpperCase()}.SUCCESS:
-                return {...state, loading: false, error:false};
-              case ${screen.toUpperCase()}.ERROR:
-                return {...state, loading: false, error:true};
-
-              default:
-                return state;
+    switch(type) {
+        case ${screen.toUpperCase()}.LOADING:
+            return {...state, loading: true, error:false};
+        case ${screen.toUpperCase()}.SUCCESS:
+            return {...state, loading: false, error:false};
+        case ${screen.toUpperCase()}.ERROR:
+            return {...state, loading: false, error:true};
+        default:
+            return state;
             }
           }`;
 };
