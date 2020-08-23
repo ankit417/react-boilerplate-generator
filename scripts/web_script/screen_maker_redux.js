@@ -16,7 +16,7 @@ const makeScreen = (screen) => {
 
 const actionTypes = (screen) => {
   return `
-${screen.toUpperCase()} ACTION SET 
+//${screen.toUpperCase()} ACTION SET 
 export const ${screen.toUpperCase()} = createActionSet("${screen.toUpperCase()}")`;
 };
 
