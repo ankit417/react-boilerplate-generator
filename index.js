@@ -21,7 +21,7 @@ switch (arguments[2]) {
     webScreenGenerator.webScreenMaker(arguments[3]);
     break;
   case "web:action":
-    actionGenerator.actionGenerator.actionMaker(arguments[3]);
+    actionGenerator.actionMaker(arguments[3]);
     break;
   case "make:install":
     libraryInstaller.installer();
