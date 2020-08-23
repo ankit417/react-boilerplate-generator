@@ -4,6 +4,7 @@ const fs = require("fs");
 
 const generator = require("./scripts/projectGenerator");
 const screenGenerator = require("./scripts/screenMaker");
+const webScreenGeneratorRedux = require("./scripts/web_script/screen_maker_redux");
 const libraryInstaller = require("./scripts/installer");
 const help = require("./scripts/help")
 var arguments = process.argv;
@@ -14,6 +15,9 @@ switch (arguments[2]) {
     break;
   case "make:screen":
     screenGenerator.screenMaker(arguments[3]);
+    break;
+  case "web:screen":
+    webScreenGeneratorRedux.webScreenMaker(arguments[3]);
     break;
   case "make:install":
     libraryInstaller.installer();
