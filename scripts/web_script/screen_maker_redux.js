@@ -11,7 +11,7 @@ const makeScreen = (screen) => {
       )
     }
 
-    export default ${screen};`;
+    export default ${screen}Page;`;
 };
 
 const actionTypes = (screen) => {
