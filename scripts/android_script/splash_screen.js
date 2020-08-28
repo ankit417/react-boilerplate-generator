@@ -48,7 +48,7 @@ const makeStyles = () => {
 };
 
 exports.splashScreen = () => {
-  const CURR_DIR = process.cmd();
+  const CURR_DIR = process.cwd();
   fs.mkdirSync(`${CURR_DIR}/android/app/src/main/res/drawable`);
   const splash = `${CURR_DIR}/android/app/src/main/res/drawable/background_splash.xml`;
   fs.writeFileSync(splash, makeSplash(), "utf8");
