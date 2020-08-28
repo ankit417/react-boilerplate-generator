@@ -54,14 +54,15 @@ exports.splashScreen = () => {
   fs.writeFileSync(splash, makeSplash(), "utf8");
 
   const color = `${CURR_DIR}/android/app/src/main/res/values/colors.xml`;
-  fs.writeFileSync(splash, makeColor(), "utf8");
+  fs.writeFileSync(color, makeColor(), "utf8");
 
   const styles = `${CURR_DIR}/android/app/src/main/res/values/styles.xml`;
-  fs.writeFileSync(splash, makeStyles(), "utf8");
+  fs.writeFileSync(styles, makeStyles(), "utf8");
 
   console.log(
     "add this line inside activity inside of application files",
-    ` android:theme="@style/SplashTheme"
+    ` 
+    android:theme="@style/SplashTheme"
     android:exported="true"
     `
   );
