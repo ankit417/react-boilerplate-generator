@@ -19,7 +19,7 @@ const makeSplash = () => {
     `;
 };
 
-const makeSplash = () => {
+const makeColor = () => {
   return `
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
@@ -47,7 +47,7 @@ const makeStyles = () => {
     `;
 };
 
-exports.splashScreen = (name) => {
+exports.splashScreen = () => {
   const CURR_DIR = process.cmd();
   fs.mkdirSync(`${CURR_DIR}/android/app/src/main/res/drawable`);
   const splash = `${CURR_DIR}/android/app/src/main/res/drawable/background_splash.xml`;
