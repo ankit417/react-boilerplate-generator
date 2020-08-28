@@ -5,6 +5,7 @@ const help_section = () => {
 .......Android commands.............
 codniv make:screen [screenName] : To make new screens
 codniv make:install : To install library for generated files
+codniv android:splashscreen : to create splash screen in android
 ........Web commands.................
 codniv web:screen [screenName] : To generate web pages with scss
 codniv web:action [actionName] : To generate Actions and reducers

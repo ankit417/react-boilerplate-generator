@@ -3,11 +3,12 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 
 const generator = require("./scripts/projectGenerator");
-const screenGenerator = require("./scripts/screenMaker");
 const webScreenGenerator = require("./scripts/web_script/screen_maker");
 const actionGenerator = require("./scripts/web_script/action_maker");
-const libraryInstaller = require("./scripts/installer");
 const webInstaller = require("./scripts/web_script/web_installer");
+const libraryInstaller = require("./scripts/installer");
+const screenGenerator = require("./scripts/screenMaker");
+const splashGenerator = require("./scripts/android_script/splash_screen")
 const help = require("./scripts/help")
 var arguments = process.argv;
 
@@ -29,6 +30,9 @@ switch (arguments[2]) {
     break;
   case "make:install":
     libraryInstaller.installer();
+    break;
+  case "android:splashscreen":
+    splashGenerator.splashScreen();
     break;
   case "help":
       return help.help()
