@@ -10,6 +10,7 @@ const libraryInstaller = require("./scripts/installer");
 const screenGenerator = require("./scripts/screenMaker");
 const splashGenerator = require("./scripts/android_script/splash_screen");
 const iconGenerator = require("./scripts/android_script/icon_generator");
+const firebase = require("./scripts/android_script/firebase_notification");
 const help = require("./scripts/help")
 var arguments = process.argv;
 
@@ -37,6 +38,12 @@ switch (arguments[2]) {
     break;
   case "android:res":
     iconGenerator.generateIcon(arguments[3]);
+    break;
+  case "android:firebase":
+    firebase.firebaseNotification();
+    break;
+  case "android:firebase-install":
+    firebase.firebase_installer()
     break;
   case "help":
       return help.help()
