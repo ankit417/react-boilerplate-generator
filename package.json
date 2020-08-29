@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "inquirer": "^7.3.3",
+    "jimp": "^0.16.1",
     "npm": "^6.14.8"
   }
 }
