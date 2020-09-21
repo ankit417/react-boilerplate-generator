@@ -1,14 +1,18 @@
 const fs = require("fs");
 
 const makeScreen = (screenName) => {
-  return `import React, { useState, useEffect } from "react";
+return `import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
   StyleSheet,
 } from "react-native";
+import { bindActionCreators } from "redux"
+import { connect } from "react-redux"
+import {get${screenName}} from "../${screenName}.action"
 
-export const ${screenName} = (props) => {
+export const ${screenName}Screen = (props) => {
+  const { ${screenName},get${screenName} } = props
   return (
     <View style={styles.container}>
       <Text>${screenName} Screen</Text>
@@ -22,7 +26,23 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-});`;
+});
+
+const mapStateToProps = (state) => {
+  return {
+    ${screenName}: state.${screenName},
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(
+    {
+      get${screenName},
+    },
+    dispatch,
+  );
+};
+export const ${screenName}Page = connect(mapStateToProps, mapDispatchToProps)(${screenName}Screen);
+`;
 };
 
 const exportScreen = (screenName) => {
@@ -32,8 +52,8 @@ const exportScreen = (screenName) => {
 const actionTypes = (screenName) => {
   return `import { createActionSet } from "../helpers";
 
-    export const ${screenName.toUpperCase()} = createActionSet("${screenName.toUpperCase()}");
-    `;
+export const ${screenName.toUpperCase()} = createActionSet("${screenName.toUpperCase()}");
+`;
 };
 
 const reducer = (screenName) => {
@@ -41,9 +61,9 @@ const reducer = (screenName) => {
 
     const initialState = {
       loader: false,
+      ${screenName}Data:null,
       error:false
     };
-    
     export function ${screenName}Reducer(state = initialState, action) {
       const { type, payload } = action;
       switch (type) {
@@ -53,11 +73,11 @@ const reducer = (screenName) => {
           return {
             ...state,
             loader: false,
+            ${screenName}Data:payload,
             error:false
           };
         case ${screenName.toUpperCase()}.ERROR:
           return { ...state, loader: false , error:true };
-    
         default:
           return state;
       }
@@ -69,9 +89,32 @@ const actionsScreen = (screenName) => {
   return `import { api } from "../helpers/api.helpers";
     import { APIS } from "../config/";
     import { ${screenName.toUpperCase()} } from "./${screenName}.actionTypes";
-    
-    export function get() {
-      
+    export function get${screenName}() {
+      return async function (dispatch) {
+        let res;
+        try {
+          dispatch({
+            type: ${screenName.toUpperCase()}.LOADING,
+          });
+          res = await api();
+          const {success, data} = res;
+          if (success === true || 'true') {
+            dispatch({
+              type: ${screenName.toUpperCase()}.SUCCESS,
+              payload: data,
+            });
+            return 1;
+          } else {
+            dispatch({type: ${screenName.toUpperCase()}.ERROR});
+          }
+        } catch ({message}) {
+          dispatch({
+            type: ${screenName.toUpperCase()}.ERROR,
+          });
+          console.error(message);
+          return 0;
+        }
+      };
     }`;
 };
 
