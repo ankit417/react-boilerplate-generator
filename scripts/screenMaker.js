@@ -122,6 +122,13 @@ const allscreen = () => {
   return `export * from "./screens";`;
 };
 
+// const reducer_modifier = (path) => {
+//   let file = fs.readFileSync(path, "utf-8");
+//   let arr = file.split(/\r?\n/);
+
+// }
+
+
 exports.screenMaker = (screen) => {
   const CURR_DIR = process.cwd();
   fs.mkdirSync(`${CURR_DIR}/${screen}`);
@@ -151,4 +158,7 @@ exports.screenMaker = (screen) => {
   fs.appendFile(all_screen, allscreen(), (err) => {
     if (err) throw err;
   });
+
+  // const store = `${CURR_DIR}/store/reducers.js`;
+  // reducer_modifier(store);
 };
