@@ -41,7 +41,7 @@ switch (arguments[2]) {
     iconGenerator.generateIcon(arguments[3]);
     break;
   case "android:splash":
-    splashImageGenerator.generateIcon(arguments[3]);
+    splashImageGenerator.generateSplash(arguments[3]);
     break;
   case "android:firebase":
     firebase.firebaseNotification();
