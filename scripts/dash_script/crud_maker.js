@@ -398,7 +398,7 @@ const editScreenMaker = (screen) => {
       
       
           const body = {
-            title: "this is title,
+            title: "this is title"
           };
       
           const photoFormdata = new FormData();
