@@ -10,9 +10,12 @@ const libraryInstaller = require("./scripts/installer");
 const screenGenerator = require("./scripts/screenMaker");
 const splashGenerator = require("./scripts/android_script/splash_screen");
 const iconGenerator = require("./scripts/android_script/icon_generator");
-const splashImageGenerator = require("./scripts/android_script/splash_image")
+const splashImageGenerator = require("./scripts/android_script/splash_image");
 const firebase = require("./scripts/android_script/firebase_notification");
-const help = require("./scripts/help")
+const help = require("./scripts/help");
+
+//DASHBOARD GENERATOR
+const dashboard = require("./scripts/dash_script/crud_maker");
 var arguments = process.argv;
 
 switch (arguments[2]) {
@@ -47,10 +50,13 @@ switch (arguments[2]) {
     firebase.firebaseNotification();
     break;
   case "android:firebase-install":
-    firebase.firebase_installer()
+    firebase.firebase_installer();
+    break;
+  case "dash:screen":
+    dashboard.dashMaker(arguments[3]);
     break;
   case "help":
-      return help.help()
+    return help.help();
   default:
     return;
 }
