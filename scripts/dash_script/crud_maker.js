@@ -22,8 +22,8 @@ const mainScreen = (screen) => {
       import { FILE_URL } from "../../config/Config";
       
       const ${screen}Page = (props) => {
-        const { get${screen}Action, delete${screen}Action, news } = props;
-        const { listLoader, listCount, list, deleteLoader } = news;
+        const { get${screen}Action, delete${screen}Action, ${smallName} } = props;
+        const { listLoader, listCount, list, deleteLoader } = ${smallName};
         const { location, navigation } = useNavigation();
         const { toast } = useAuth();
         const { navigate, routes } = navigation;
@@ -58,7 +58,7 @@ const mainScreen = (screen) => {
                       <InvertedButton
                         title="Add"
                         onClick={() => {
-                          // navigate(routes["Add News"].path);
+                          navigate(routes["Add ${screen}"].path);
                         }}
                       />
                     </div>
