@@ -17,6 +17,7 @@ const help = require("./scripts/help");
 
 //DASHBOARD GENERATOR
 const dashboard = require("./scripts/dash_script/crud_maker");
+const dashInstaller = require("./scripts/dash_script/dash_installer");
 var arguments = process.argv;
 
 switch (arguments[2]) {
@@ -55,6 +56,9 @@ switch (arguments[2]) {
     break;
   case "dash:screen":
     dashboard.dashMaker(arguments[3]);
+    break;
+  case "dash:installer":
+    dashInstaller.dash_installer(arguments[3]);
     break;
   case "web:common":
     commonMaker.webCommonMaker(arguments[3]);

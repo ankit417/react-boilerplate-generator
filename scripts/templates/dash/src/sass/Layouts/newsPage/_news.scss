@@ -1,0 +1,20 @@
+//NEWS STYLES
+.newspage-container {
+  .newspage {
+    &-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &-title {
+        font-family: $avertaSemiBold;
+        font-size: $thin;
+        color: $defaulttextcolor;
+      }
+    }
+
+    &-list {
+      margin-top: 20px;
+    }
+  }
+}

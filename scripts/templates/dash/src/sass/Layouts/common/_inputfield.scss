@@ -1,0 +1,32 @@
+.inputfield {
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid $grey;
+  padding: 20px 10px;
+  font-size: $extrathin;
+  background-color: $light_grey;
+  &:focus {
+    outline-offset: 0px;
+    outline: none;
+    padding: 20px 10px;
+    border: 1px solid $primarycolor;
+  }
+}
+
+.textfield {
+  border-radius: 4px;
+  border: 1px solid $grey;
+  padding: 10px 10px;
+  font-size: $extrathin;
+  background-color: $light_grey;
+  &:focus {
+    outline-offset: 0px;
+    outline: none;
+    padding: 10px 10px;
+    border: 1px solid $primarycolor;
+  }
+}
+
+.fixedwidth {
+  width: 300px;
+}

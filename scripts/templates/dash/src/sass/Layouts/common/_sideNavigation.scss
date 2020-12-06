@@ -1,0 +1,223 @@
+// SIDE NAVIGATION STYLES
+$scrollbarsize: 10px;
+
+.sidenavigation-mobile-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: none;
+
+  @include responsive-for(lg) {
+    display: block;
+  }
+
+  .sidenavigation-mobile {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 80vw;
+    background: $white;
+    border-right: 1px solid $grey;
+    box-shadow: 6px 0px 46px rgba(0, 0, 0, 0.08);
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background-color: $light_grey;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: $grey;
+      border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: darken($grey, 5%);
+    }
+
+    .close-sidenav {
+      position: absolute;
+      right: 20px;
+      top: 45px;
+      font-size: 30px;
+      cursor: pointer;
+    }
+  }
+}
+
+.sidenavigation-web {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 18vw;
+  background: $white;
+  border-right: 1px solid $grey;
+  // padding: 0px 20px;
+  display: block;
+  overflow-y: auto;
+  /* width */
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background-color: $light_grey;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: $grey;
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: darken($grey, 5%);
+  }
+
+  @include responsive-for(xlg) {
+    width: 26vw;
+  }
+
+  @include responsive-for(lg) {
+    display: none;
+  }
+}
+
+.sidenavigation-container {
+  .sidenavigation {
+    padding-top: 10px;
+
+    &-header {
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        height: 150px;
+      }
+    }
+
+    &-list {
+      list-style: none;
+      margin-top: 40px;
+
+      @include responsive-for(lg) {
+        margin-top: 10px;
+      }
+
+      &-item {
+        position: relative;
+
+        a {
+          display: block;
+          padding: 15px 30px;
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          color: $secondarytextcolor;
+          transition: color 0.2s, padding 0.2s, background-color 0.2s;
+          position: relative;
+          border-bottom: 1px solid #f1f1f1;
+
+          &:hover {
+            background: rgba(2, 134, 167, 0.04);
+          }
+
+          .icon {
+            font-size: $extrasmall;
+            position: relative;
+            top: 2px;
+            transition: color 0.2s;
+          }
+
+          .title {
+            font-family: $avertaSemiBold;
+            padding-left: 10px;
+          }
+
+          &::before {
+            position: absolute;
+            width: 6px;
+            height: 100%;
+            background: $primarycolor;
+            content: "";
+            left: -20px;
+            top: 0;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            transition: left 0.2s;
+          }
+
+          &.active {
+            color: $primarycolor;
+            transition: background-color 0.2s;
+            background: rgba(2, 134, 167, 0.07);
+
+            .title {
+              color: $primarycolor;
+            }
+
+            &::before {
+              left: 0px;
+            }
+          }
+        }
+
+        &-badge {
+          position: absolute;
+          right: 20px;
+          top: 50%;
+          background: $red;
+          width: 26px;
+          height: 26px;
+          transform: translateY(-50%);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-family: $avertaSemiBold;
+          color: $white;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}
+
+// SIDE NAV ANIMATION
+.sidenavigation-node {
+  &-enter {
+    opacity: 0;
+    transform: translateX(-100%);
+
+    &-active {
+      opacity: 1;
+      transform: translateX(0);
+      transition: opacity 200ms, transform 200ms;
+    }
+  }
+
+  &-exit {
+    opacity: 1;
+    transform: translateX(0);
+
+    &-active {
+      opacity: 0;
+      transform: translateX(-100%);
+      transition: opacity 200ms, transform 200ms;
+    }
+  }
+}

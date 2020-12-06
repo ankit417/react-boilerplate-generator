@@ -1,0 +1,96 @@
+// BUTTON STYLES
+
+.button {
+  outline: none;
+  border: none;
+  width: 100%;
+  padding: 4px 0px;
+  border-radius: 4px;
+  font-size: $extrathin;
+  cursor: pointer;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+
+  &.default {
+    background: lighten($primarycolor, 32%);
+    color: $primarycolor;
+    // border: 2px solid $primarycolor;
+    transition: background 0.4s, border-color 0.8s;
+
+    &:hover {
+      background: lighten($primarycolor, 26%);
+      // color: white;
+    }
+
+    &:active {
+      background: darken($primarycolor, 10%);
+    }
+  }
+
+  &.default-invert {
+    background: $primarycolor;
+    color: white;
+    border: 2px solid white;
+    transition: background 0.4s, border-color 0.8s;
+
+    &:hover {
+      background: white;
+      color: $primarycolor;
+    }
+
+    &:active {
+      background: darken(white, 10%);
+      border-color: darken(white, 10%);
+    }
+  }
+
+  &.inverted {
+    background: $primarycolor;
+    color: white;
+    border: 2px solid $primarycolor;
+    transition: background 0.4s, border-color 0.8s;
+
+    &:hover {
+      background: darken($primarycolor, 4%);
+      border-color: darken($primarycolor, 4%);
+    }
+
+    &:active {
+      background: darken($primarycolor, 10%);
+      border-color: darken($primarycolor, 10%);
+    }
+  }
+
+  &.floating {
+    background: $white;
+    color: black;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.16);
+    padding: 7px 20px;
+    cursor: pointer;
+    transition: background 0.4s, border-color 0.8s;
+    border: 3px solid white;
+
+    &:hover {
+      background: darken($white, 4%);
+      border-color: darken($white, 4%);
+    }
+
+    &:active {
+      background: darken($white, 10%);
+      border-color: darken($white, 10%);
+    }
+  }
+}
+
+.icon-button {
+  outline: none;
+  border: none;
+  width: 100%;
+  font-size: $thin;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.16);
+  color: $black;
+
+  &:hover {
+    color: $defaulttextcolor;
+  }
+}

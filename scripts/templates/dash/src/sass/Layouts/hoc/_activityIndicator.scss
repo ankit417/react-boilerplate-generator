@@ -1,0 +1,29 @@
+// ACTIVITY INDICATOR STYLES
+.activityindicator-container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  .activityindicator {
+    display: flex;
+    justify-content: center;
+
+    &-loader {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid $defaultborder;
+      border-top: 2px solid $primarycolor;
+
+      @include animation("loaderAnimation 1s linear infinite");
+
+      @include keyframes("loaderAnimation") {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    }
+  }
+}

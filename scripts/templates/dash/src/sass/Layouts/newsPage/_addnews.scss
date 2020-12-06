@@ -1,0 +1,40 @@
+.addnews-container {
+  .addnews {
+    &-form {
+      display: grid;
+      row-gap: 20px;
+      &-input {
+        display: flex;
+        flex-direction: column;
+        &-label {
+          font-family: $avertaSemiBold;
+          margin-bottom: 6px;
+        }
+      }
+
+      &-files {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .fileupload {
+          position: relative;
+          display: inline-block;
+          overflow: hidden;
+          // margin-top: 30px;
+          // border-radius: 100px;
+
+          input[type="file"] {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            opacity: 0;
+            font-size: 100px;
+          }
+        }
+      }
+    }
+    a {
+      color: $black;
+    }
+  }
+}

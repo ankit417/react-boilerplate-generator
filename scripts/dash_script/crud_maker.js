@@ -4,8 +4,8 @@ const mainScreen = (screen) => {
   const smallName = screen.charAt(0).toLowerCase() + screen.slice(1);
 
   return `import React, { useEffect } from "react";
-      import { useNavigation, useAuth } from "react-uicomp";
-      
+      import { useAuth, useNavigation } from "react-auth-navigation";
+
       // ACTIONs
       import { connect } from "react-redux";
       import { bindActionCreators } from "redux";
@@ -132,7 +132,7 @@ const addScreenMaker = (screen) => {
 
   return `import React, { useState } from "react";
         import ImageUploading from "react-images-uploading";
-        import { useNavigation, useAuth } from "react-uicomp";
+        import { useAuth, useNavigation } from "react-auth-navigation";
         import { useForm } from "react-hook-form";
         import { AiFillCloseCircle } from "react-icons/ai";
         
@@ -319,7 +319,7 @@ const editScreenMaker = (screen) => {
   const smallName = screen.charAt(0).toLowerCase() + screen.slice(1);
   return `import React, { useEffect, useState } from "react";
       import ImageUploading from "react-images-uploading";
-      import { useNavigation, useAuth } from "react-uicomp";
+      import { useAuth, useNavigation } from "react-auth-navigation";
       import { useForm } from "react-hook-form";
       import { AiFillCloseCircle } from "react-icons/ai";
       

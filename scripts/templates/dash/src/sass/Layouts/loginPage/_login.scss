@@ -1,0 +1,67 @@
+//LOGIN STYLES
+.login-container {
+  padding-top: 120px;
+
+  .login {
+    min-width: 350px;
+    width: 25%;
+    margin: 0px auto;
+    background: white;
+    box-shadow: 0px 4px 24px rgba(152, 152, 152, 0.19);
+    border-radius: 20px;
+    padding: 0px 40px;
+    padding-bottom: 10px;
+
+    &-title {
+      padding: 30px 10px 5px 0px;
+      font-family: $avertaSemiBold;
+      color: black;
+      border-bottom: 3px solid $light_grey;
+      font-size: $extrasmall;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    &-input {
+      position: relative;
+      margin-bottom: 10px;
+
+      &-logo {
+        position: absolute;
+        width: 30px;
+        top: 50%;
+        left: 5%;
+        transform: translateY(-50%);
+
+        img {
+          width: 100%;
+        }
+      }
+
+      &-field {
+        background: lighten(grey, 45%);
+        border: none;
+        display: block;
+        width: 100%;
+        padding: 20px 60px;
+        border-radius: 100px;
+        outline: none;
+        font-family: $avertaSemiBold;
+        font-size: $extrathin;
+        border: 2px solid white;
+        transition: box-shadow 0.5s, border 0.2s, background 0.4s;
+
+        &:focus {
+          border: 2px solid $primarycolor;
+          background: lighten($primarycolor, 65%);
+          box-shadow: 0px 0px 10px lighten($primarycolor, 60%);
+        }
+      }
+    }
+
+    &-submit {
+      padding-top: 10px;
+      padding-bottom: 30px;
+    }
+  }
+}

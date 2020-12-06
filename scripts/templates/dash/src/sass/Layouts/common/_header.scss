@@ -1,0 +1,224 @@
+// HEADER STYLE// HEADER STYLE
+.header-container {
+  padding-top: 45px;
+  margin-bottom: 30px;
+
+  @include responsive-for(lg) {
+    padding-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  @include responsive-for(md) {
+    padding-top: 20px;
+    margin-bottom: 30px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-menu {
+      font-size: 30px;
+      margin-right: 20px;
+      cursor: pointer;
+      transition: color 0.2s;
+      display: none;
+      position: relative;
+      top: 2px;
+
+      @include responsive-for(lg) {
+        display: block;
+      }
+
+      &:hover {
+        color: $nt_darkdefault;
+      }
+    }
+
+    &-left {
+      flex: 1;
+      font-size: $medium;
+      // font-family: $robotobold;
+
+      @include responsive-for(lg) {
+        font-size: $small;
+      }
+
+      @include responsive-for(sm) {
+        font-size: $extrasmall;
+      }
+    }
+
+    &-right {
+      display: flex;
+      align-items: center;
+
+      &-buttons {
+        list-style: none;
+        display: flex;
+        align-items: center;
+
+        &-item {
+          position: relative;
+          top: 2px;
+          font-size: $small;
+          color: $secondarytextcolor;
+          padding: 0px 5px;
+          cursor: pointer;
+          transition: color 0.2s;
+
+          .notification-badge {
+            width: 18px;
+            height: 18px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            border-radius: 50%;
+            background: $orange;
+            font-size: 10px;
+            //   font-family: $robotobold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $white;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+          }
+
+          &:hover {
+            color: darken($secondarytextcolor, 10%);
+          }
+
+          &.active {
+            color: darken($secondarytextcolor, 10%);
+          }
+        }
+
+        .notification-modal {
+          background: $white;
+          border-radius: 4px;
+          border: 1px solid $defaultborder;
+          width: 300px;
+          box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.12);
+
+          &-header {
+            padding: 20px 10px 20px 10px;
+            border-bottom: 1px solid $defaultborder;
+            //   font-family: $robotobold;
+          }
+
+          &-contents {
+            padding-top: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+
+            .notification-item {
+              padding: 10px;
+              border-bottom: 1px solid $light_grey;
+              cursor: pointer;
+              transition: background-color 0.2s;
+              display: flex;
+              justify-content: space-between;
+
+              &:hover {
+                background-color: $light_grey;
+              }
+
+              &:last-child {
+                border: none;
+                padding-bottom: 20px;
+              }
+
+              &-status {
+                color: $secondarytextcolor;
+
+                &.paid {
+                  color: $nt_darkdefault;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &-profile {
+        margin-left: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+
+        &:hover {
+          .profile-image {
+            background-color: darken($defaultborder, 10%);
+          }
+        }
+
+        &.active {
+          .profile-image {
+            background-color: darken($defaultborder, 10%);
+          }
+        }
+
+        .profile-image {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background-color: $defaultborder;
+          transition: background-color 0.2s;
+        }
+
+        .profile-name {
+          padding-left: 6px;
+          display: flex;
+          align-items: center;
+
+          span {
+            //   font-family: $robotobold;
+            color: $black;
+            padding-right: 5px;
+
+            @include responsive-for(lg) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
+    .logged-user {
+      &-icon {
+        background: $white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $black;
+        cursor: pointer;
+        border: 1px solid $grey;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+        transition: background 0.2s;
+
+        &:hover {
+          background: $primarycolor;
+          color: $white;
+        }
+
+        &.active {
+          background: $primarycolor;
+          color: $white;
+        }
+      }
+
+      .menuItem {
+        font-size: 16px !important;
+        font-family: $avertaSemiBold;
+
+        &.danger {
+          color: $red;
+        }
+      }
+    }
+  }
+}

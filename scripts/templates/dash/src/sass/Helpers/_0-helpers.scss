@@ -1,0 +1,32 @@
+@font-face {
+    src: url('../../assets/fonts/AvertaBold.otf');
+    font-family: AvertaBold;
+}
+
+@font-face {
+    src: url('../../assets/fonts/AvertaExtraBold.otf');
+    font-family: AvertaExtraBold;
+}
+
+@font-face {
+    src: url('../../assets/fonts/AvertaLight.otf');
+    font-family: AvertaLight;
+}
+
+@font-face {
+    src: url('../../assets/fonts/AvertaSemibold.otf');
+    font-family: AvertaSemiBold;
+}
+
+@import './1-variables', './2-mixins', './3-generics';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: AvertaLight, "Montserrat", "Raleway", "Tahoma";
+}
+
+html {
+    scroll-behavior: smooth;
+}

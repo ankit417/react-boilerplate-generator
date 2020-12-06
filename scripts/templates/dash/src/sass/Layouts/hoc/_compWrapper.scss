@@ -1,0 +1,20 @@
+// COMP WRAPPER STYLES// COMP WRAPPER STYLES
+.compwrapper-container {
+    padding-left: 20vw;
+    padding-right: 2vw;
+    padding-bottom: 60px;
+    @include responsive-for(xlg) {
+      padding-left: 28vw;
+    }
+
+    @include responsive-for(lg) {
+      padding-left: 4vw;
+      padding-right: 4vw;
+    }
+    .compwrapper{
+      padding: 15px;
+      background-color: $white;
+      border-radius: 4px;
+      box-shadow: 0px 3px 4px -2px rgba(0,0,0,0.16);
+    }
+  }
