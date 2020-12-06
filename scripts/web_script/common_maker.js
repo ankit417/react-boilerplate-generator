@@ -30,8 +30,8 @@ const sassExporter = (screen) => {
 exports.webCommonMaker = (screen) => {
   const CURR_DIR = process.cwd();
   const pageName = screen.charAt(0).toUpperCase() + screen.slice(1);
+  fs.mkdirSync(`${CURR_DIR}/common/${screen}`);
   const screens = `${CURR_DIR}/common/${screen}/${pageName}.common.js`;
-
   fs.writeFileSync(screens, makeCommon(pageName), "utf8");
 
   const sass = `${CURR_DIR}/sass/Layouts/common/_${screen}.scss`;
