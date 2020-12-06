@@ -16,8 +16,9 @@ exports.web_installer = () => {
           "react-dom",
           "react-router-dom",
           "react-scripts",
-          "react-uicomp",
-          "universal-cookie"
+          "react-uicomp@2.0.1",
+          "react-auth-navigation",
+          "universal-cookie",
         ],
         function (er, data) {}
       );

@@ -1,5 +1,5 @@
 import React from "react";
-import { Auth, withNavigation } from "react-uicomp";
+import { Auth, withNavigation } from "react-auth-navigation";
 import { publicPaths, privatePaths } from "./Routes.app";
 import { userRoles } from "./UserRoles.app";
 
