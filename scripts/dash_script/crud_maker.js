@@ -44,7 +44,6 @@ const mainScreen = (screen) => {
         };
       
         const editHandler = (id) => {
-          // navigate(event/edit/${id});
 
         };
       
