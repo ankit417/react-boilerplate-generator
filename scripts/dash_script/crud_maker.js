@@ -44,7 +44,8 @@ const mainScreen = (screen) => {
         };
       
         const editHandler = (id) => {
-          
+          // navigate(event/edit/${id});
+
         };
       
         return (
@@ -58,7 +59,7 @@ const mainScreen = (screen) => {
                       <InvertedButton
                         title="Add"
                         onClick={() => {
-                          navigate(routes["Add News"].path);
+                          // navigate(routes["Add News"].path);
                         }}
                       />
                     </div>
@@ -174,10 +175,10 @@ const addScreenMaker = (screen) => {
           };
         
           const onChangeHandler = (event) => {
-            if (event.target.files.length) {
-              setFileName(event.target.files[0].name);
-              setFile(event.target.files);
-            }
+            // if (event.target.files.length) {
+            //   setFileName(event.target.files[0].name);
+            //   setFile(event.target.files);
+            // }
           };
         
           const onSubmit = (data) => {
@@ -347,7 +348,7 @@ const editScreenMaker = (screen) => {
       //CONFIG
       import { FILE_URL } from "../../../config/Config";
       
-      const EditNewsPage = (props) => {
+      const Edit${screen}Page = (props) => {
         const { navigation, params } = useNavigation();
         const { toast } = useAuth();
         const { navigate, routes } = navigation;
@@ -668,13 +669,13 @@ const actionsScreen = (screen) => {
             let res;
             try {
               dispatch({ type: EDIT_${screen.toUpperCase()}.LOADING });
-              res = await api(API.sample/id, "PATCH", body);
+              res = await api(APIS.sample/id, "PATCH", body);
         
               const { success, data } = res.data;
         
               if (success === "true") {
                 let photoRes = await api(
-                  APIS.common/image/id,
+                  APIS.common+'/image/'+id,
                   "PATCH",
                   photoFormdata,
                   { file: true },

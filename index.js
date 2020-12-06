@@ -12,6 +12,7 @@ const splashGenerator = require("./scripts/android_script/splash_screen");
 const iconGenerator = require("./scripts/android_script/icon_generator");
 const splashImageGenerator = require("./scripts/android_script/splash_image");
 const firebase = require("./scripts/android_script/firebase_notification");
+const commonMaker = require("./scripts/web_script/common_maker");
 const help = require("./scripts/help");
 
 //DASHBOARD GENERATOR
@@ -54,6 +55,9 @@ switch (arguments[2]) {
     break;
   case "dash:screen":
     dashboard.dashMaker(arguments[3]);
+    break;
+  case "web:common":
+    commonMaker.webCommonMaker(arguments[3]);
     break;
   case "help":
     return help.help();
