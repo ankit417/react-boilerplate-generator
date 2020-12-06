@@ -18,7 +18,7 @@ codniv web:common [screenName] : To generate common
 ......dashboard commands............
 
 codniv dash:screen [screenName] : to generate dashboard CRUD Screen
-codniv dash:installer : to install dashboard packages
+codniv dash:install : to install dashboard packages
         `;
 };
 

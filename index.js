@@ -57,7 +57,7 @@ switch (arguments[2]) {
   case "dash:screen":
     dashboard.dashMaker(arguments[3]);
     break;
-  case "dash:installer":
+  case "dash:install":
     dashInstaller.dash_installer(arguments[3]);
     break;
   case "web:common":
