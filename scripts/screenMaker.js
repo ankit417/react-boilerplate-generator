@@ -53,8 +53,8 @@ const exportScreen = (screenName) => {
 };
 
 const actionTypes = (screenName) => {
-  return `import  createActionSet  from "../helpers";
-
+  return `import {createActionSet} from '../../helpers';
+  
 export const ${screenName.toUpperCase()} = createActionSet("${screenName.toUpperCase()}");
 `;
 };
