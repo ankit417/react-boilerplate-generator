@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 const makeScreen = (screenName) => {
-  return `import React, { useState } from "react";
+  return `import React, { useState , useEffect } from "react";
   import {
     View,
     Text,
@@ -25,6 +25,9 @@ export const ${screenName}Screen = () => {
 
   const {${screenName}loader, ${screenName}Data}  = useSelector((state) => state.${screenName});
 
+  useEffect(()=>{
+    dispatch(get${screenName}Action());
+  },[])
   return (
     <SafeAreaView style={styles.container}>
       <Text>${screenName} Screen</Text>
