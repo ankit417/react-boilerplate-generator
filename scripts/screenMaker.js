@@ -171,9 +171,9 @@ exports.screenMaker = (screen) => {
   // reducer_modifier(store);
 };
 
-const reducer_modifier = (screenName) => {
-  return `
-// import {${screenName}Reducer} from '../screens/${screenName}Screen/${screenName}.reducer';
-// ${screenName}: ${screenName}Reducer
-`;
-};
+// const reducer_modifier = (screenName) => {
+//   return `
+// // import {${screenName}Reducer} from '../screens/${screenName}Screen/${screenName}.reducer';
+// // ${screenName}: ${screenName}Reducer
+// `;
+// };
