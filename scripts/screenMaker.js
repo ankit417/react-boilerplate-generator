@@ -53,7 +53,7 @@ const exportScreen = (screenName) => {
 };
 
 const actionTypes = (screenName) => {
-  return `import { createActionSet } from "../helpers";
+  return `import  createActionSet  from "../helpers";
 
 export const ${screenName.toUpperCase()} = createActionSet("${screenName.toUpperCase()}");
 `;
@@ -138,30 +138,30 @@ const reducer_modifier = (screenName) => {
 
 exports.screenMaker = (screen) => {
   const CURR_DIR = process.cwd();
-  fs.mkdirSync(`${CURR_DIR}/src/screens/${screen}screen`);
-  fs.mkdirSync(`${CURR_DIR}/src/screens/${screen}screen/screens`);
-  const screens = `${CURR_DIR}/src/screens/${screen}screen/screens/${screen}.screen.js`;
-  const screen_index = `${CURR_DIR}/src/screens/${screen}screen/screens/index.js`;
+  fs.mkdirSync(`${CURR_DIR}/src/screens/${screen}Screen`);
+  fs.mkdirSync(`${CURR_DIR}/src/screens/${screen}Screen/screens`);
+  const screens = `${CURR_DIR}/src/screens/${screen}Screen/screens/${screen}.screen.js`;
+  const screen_index = `${CURR_DIR}/src/screens/${screen}Screen/screens/index.js`;
   fs.writeFileSync(screens, makeScreen(screen), "utf8");
   fs.appendFile(screen_index, exportScreen(screen), (err) => {
     if (err) throw err;
   });
 
-  const action_types = `${CURR_DIR}/src/screens/${screen}screen/${screen}.actionTypes.js`;
+  const action_types = `${CURR_DIR}/src/screens/${screen}Screen/${screen}.actionTypes.js`;
   fs.appendFile(action_types, actionTypes(screen), (err) => {
     if (err) throw err;
   });
 
-  const actions = `${CURR_DIR}/src/screens/${screen}screen/${screen}.action.js`;
+  const actions = `${CURR_DIR}/src/screens/${screen}Screen/${screen}.action.js`;
   fs.appendFile(actions, actionsScreen(screen), (err) => {
     if (err) throw err;
   });
 
-  const reducers = `${CURR_DIR}/src/screens/${screen}screen/${screen}.reducer.js`;
+  const reducers = `${CURR_DIR}/src/screens/${screen}Screen/${screen}.reducer.js`;
   fs.appendFile(reducers, reducer(screen), (err) => {
     if (err) throw err;
   });
-  const all_screen = `${CURR_DIR}/src/screens/${screen}screen/index.js`;
+  const all_screen = `${CURR_DIR}/src/screens/${screen}Screen/index.js`;
   fs.appendFile(all_screen, allscreen(), (err) => {
     if (err) throw err;
   });
