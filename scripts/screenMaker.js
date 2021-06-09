@@ -23,8 +23,7 @@ export const ${screenName}Screen = () => {
   const currentStack = useCurrentNavigationState();
   const dispatch = useDispatch();
 
-  // Write your root reducer and Import here .Given is the example you can use.
-  // const root  = useSelector((state) => state.root);
+  const {${screenName}loader, ${screenName}Data}  = useSelector((state) => state.${screenName});
 
   return (
     <SafeAreaView style={styles.container}>
