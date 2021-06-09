@@ -97,7 +97,7 @@ const actionsScreen = (screenName) => {
             type: ${screenName.toUpperCase()}.LOADING,
           });
           res = await api();
-          const {success, data} = res;
+          const {success, data} = res.data;
           if (success) {
             dispatch({
               type: ${screenName.toUpperCase()}.SUCCESS,
@@ -130,30 +130,30 @@ const allscreen = () => {
 
 exports.screenMaker = (screen) => {
   const CURR_DIR = process.cwd();
-  fs.mkdirSync(`${CURR_DIR}/${screen}`);
-  fs.mkdirSync(`${CURR_DIR}/${screen}/screens`);
-  const screens = `${CURR_DIR}/${screen}/screens/${screen}.screen.js`;
-  const screen_index = `${CURR_DIR}/${screen}/screens/index.js`;
+  fs.mkdirSync(`${CURR_DIR}/src/screens/${screen}`);
+  fs.mkdirSync(`${CURR_DIR}/src/screens/${screen}/screens`);
+  const screens = `${CURR_DIR}/src/screens/${screen}/screens/${screen}.screen.js`;
+  const screen_index = `${CURR_DIR}/src/screens/${screen}/screens/index.js`;
   fs.writeFileSync(screens, makeScreen(screen), "utf8");
   fs.appendFile(screen_index, exportScreen(screen), (err) => {
     if (err) throw err;
   });
 
-  const action_types = `${CURR_DIR}/${screen}/${screen}.actionTypes.js`;
+  const action_types = `${CURR_DIR}/src/screens/${screen}/${screen}.actionTypes.js`;
   fs.appendFile(action_types, actionTypes(screen), (err) => {
     if (err) throw err;
   });
 
-  const actions = `${CURR_DIR}/${screen}/${screen}.action.js`;
+  const actions = `${CURR_DIR}/src/screens/${screen}/${screen}.action.js`;
   fs.appendFile(actions, actionsScreen(screen), (err) => {
     if (err) throw err;
   });
 
-  const reducers = `${CURR_DIR}/${screen}/${screen}.reducer.js`;
+  const reducers = `${CURR_DIR}/src/screens/${screen}/${screen}.reducer.js`;
   fs.appendFile(reducers, reducer(screen), (err) => {
     if (err) throw err;
   });
-  const all_screen = `${CURR_DIR}/${screen}/index.js`;
+  const all_screen = `${CURR_DIR}/src/screens/${screen}/index.js`;
   fs.appendFile(all_screen, allscreen(), (err) => {
     if (err) throw err;
   });
