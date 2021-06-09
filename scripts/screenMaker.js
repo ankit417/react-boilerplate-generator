@@ -1,22 +1,35 @@
 const fs = require("fs");
 
 const makeScreen = (screenName) => {
-return `import React, { useState, useEffect } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-} from "react-native";
-import { bindActionCreators } from "redux"
-import { connect } from "react-redux"
-import {get${screenName}} from "../${screenName}.action"
+  return `import React, { useState } from "react";
+  import {
+    View,
+    Text,
+    SafeAreaView,
+    StyleSheet,
+    Dimensions,
+  } from "react-native";
+  import { useDispatch, useSelector } from "react-redux";
+  import { useNavigation,useNavigationState } from "@react-navigation/native";
 
-export const ${screenName}Screen = (props) => {
-  const { ${screenName},get${screenName} } = props
+import {get${screenName}Action} from "../${screenName}.action"
+import {useCurrentNavigationState} from '../../../hooks';
+import { colors, fonts, spacing } from "../../../modules";
+const { height, width } = Dimensions.get("window");
+
+export const ${screenName}Screen = () => {
+  const navigation = useNavigation();
+  const {name, key} = useNavigationState(state => state.routes[state.index]);
+  const currentStack = useCurrentNavigationState();
+  const dispatch = useDispatch();
+
+  // Write your root reducer and Import here .Given is the example you can use.
+  // const root  = useSelector((state) => state.root);
+
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text>${screenName} Screen</Text>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -25,23 +38,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    textAlign: "center",
+    backgroundColor: colors.light.borderColor,
+
   },
 });
-
-const mapStateToProps = (state) => {
-  return {
-    ${screenName}: state.${screenName},
-  };
-};
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators(
-    {
-      get${screenName},
-    },
-    dispatch,
-  );
-};
-export const ${screenName}Page = connect(mapStateToProps, mapDispatchToProps)(${screenName}Screen);
 `;
 };
 
@@ -60,24 +61,24 @@ const reducer = (screenName) => {
   return `import { ${screenName.toUpperCase()} } from "./${screenName}.actionTypes";
 
     const initialState = {
-      loader: false,
-      ${screenName}Data:null,
+      ${screenName}loader: false,
+      ${screenName}Data:[],
       error:false
     };
     export function ${screenName}Reducer(state = initialState, action) {
       const { type, payload } = action;
       switch (type) {
         case ${screenName.toUpperCase()}.LOADING:
-          return { ...state, loader: true , error:false };
+          return { ...state, ${screenName}loader: true , error:false };
         case ${screenName.toUpperCase()}.SUCCESS:
           return {
             ...state,
-            loader: false,
+            ${screenName}loader: false,
             ${screenName}Data:payload,
             error:false
           };
         case ${screenName.toUpperCase()}.ERROR:
-          return { ...state, loader: false , error:true };
+          return { ...state, ${screenName}loader: false , error:true };
         default:
           return state;
       }
@@ -86,10 +87,9 @@ const reducer = (screenName) => {
 };
 
 const actionsScreen = (screenName) => {
-  return `import { api } from "../helpers/api.helpers";
-    import { APIS } from "../config/";
-    import { ${screenName.toUpperCase()} } from "./${screenName}.actionTypes";
-    export function get${screenName}() {
+  return `import {api, APIS} from '../../config'
+   import { ${screenName.toUpperCase()} } from "./${screenName}.actionTypes";
+    export function get${screenName}Action() {
       return async function (dispatch) {
         let res;
         try {
@@ -98,7 +98,7 @@ const actionsScreen = (screenName) => {
           });
           res = await api();
           const {success, data} = res;
-          if (success === true || 'true') {
+          if (success) {
             dispatch({
               type: ${screenName.toUpperCase()}.SUCCESS,
               payload: data,
@@ -127,7 +127,6 @@ const allscreen = () => {
 //   let arr = file.split(/\r?\n/);
 
 // }
-
 
 exports.screenMaker = (screen) => {
   const CURR_DIR = process.cwd();
